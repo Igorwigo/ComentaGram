@@ -118,9 +118,9 @@ root.withdraw()
 #messagebox.showinfo('Comenta Gram', \
  #     'Escolha o arquivo em TEXTO(.txt) onde tem a lista de seus seguidores')
 
-#arq = dlg.askopenfilename(filetypes=[("Arquivo de texto", "*.txt")])
+arq = dlg.askopenfilename(filetypes=[("Arquivo de texto", "*.txt")])
 
-arq=["EU QUERO","VOU GANHAR","JÁ GANHEI"]
+#arq=["EU QUERO","VOU GANHAR","JÁ GANHEI"]
 
 comenta_gram = InstagramBot(userman,senha,qtdPessoas,url,arq)
 comenta_gram.login()

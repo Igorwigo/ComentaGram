@@ -6,7 +6,7 @@ import getpass
 import tkinter as tk
 from tkinter import filedialog as dlg
 from tkinter import messagebox
-
+from selenium.webdriver.common.by import By
 
 # Fiz algumas modificações
 
@@ -33,14 +33,16 @@ class InstagramBot:
         driver = self.driver
         driver.get("https://www.instagram.com")
         time.sleep(3)
-        user_element = driver.find_element_by_xpath(
-            "//input[@name='username']")
+        #user_element = driver.find_element_by_xpath(            "//input[@name='username']")
+        user_element=driver.find_element(By.XPATH, '//input[@name="username"]')
+
+
+
         user_element.clear()
         user_element.send_keys(self.username)
         time.sleep(3)
-        password_element = driver.find_element_by_xpath(
-            "//input[@name='password']")
-
+        #password_element = driver.find_element_by_xpath(            "//input[@name='password']")
+        password_element=driver.find_element(By.XPATH, '//input[@name="password"]')
         password_element.clear()
         password_element.send_keys(self.password)
         time.sleep(3)
@@ -77,8 +79,9 @@ class InstagramBot:
     def comenta_no_sorteio(self):
 
         driver = self.driver
-        driver.find_element_by_class_name("Ypffh").click()
-        comment_input_box = driver.find_element_by_class_name("Ypffh")
+        driver.find_element(By.CLASS_NAME, value="Ypffh").click()
+        #driver.find_element_by_class_name("Ypffh").click()
+        comment_input_box = driver.find_element(By.CLASS_NAME, value="Ypffh")
         comment_input_box.click()
         
         time.sleep(5)
@@ -91,7 +94,7 @@ class InstagramBot:
         
         comentarios_ate_agora=0
         for i in range(0,repeticao,1):#repete de acordo com os dados da variavel repeticao
-            time.sleep(5)
+            time.sleep(2)
             for z in range(0,qtdPessoas,1):
                 self.escreve_como_pessoa(lista_perfis[0],comment_input_box)
                 time.sleep(2)
@@ -100,10 +103,10 @@ class InstagramBot:
                 time.sleep(2)
                 comentarios_ate_agora+=1
             print("Comentarios até agora: "+str(comentarios_ate_agora)+"/"+str(total))
-            time.sleep(random.randint(120, 200))#altere aqui o valor para o de sua preferencia, no caso a cada quantos segundos o bot comente para vc
-            driver.find_element_by_xpath("//button[contains(text(), 'Publicar')]").click()
-        
-            
+            time.sleep(5)#altere aqui o valor para o de sua preferencia, no caso a cada quantos segundos o bot comente para vc
+            #driver.find_element(By.CLASS_NAME, value="//*[@id='react-root']/section/main/div/div[1]/article/div/div[2]/div/div[2]/section[3]/div/form/button/div").click()
+            driver.find_element_by_xpath("/html/body/div[1]/section/main/div/div[1]/article/div/div[2]/div/div[2]/section[3]/div/form/button").click()
+
 # Entre com o usuário e senha aqui
 userman=input("Qual o seu usuario: ")
 senha=getpass.getpass("qual a sua senha: ")
