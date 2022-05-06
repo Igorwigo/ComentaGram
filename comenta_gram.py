@@ -103,7 +103,7 @@ class InstagramBot:
                 time.sleep(2)
                 comentarios_ate_agora+=1
             print("Comentarios até agora: "+str(comentarios_ate_agora)+"/"+str(total))
-            time.sleep(5)#altere aqui o valor para o de sua preferencia, no caso a cada quantos segundos o bot comente para vc
+            time.sleep(130)#altere aqui o valor para o de sua preferencia, no caso a cada quantos segundos o bot comente para vc
             #driver.find_element(By.CLASS_NAME, value="//*[@id='react-root']/section/main/div/div[1]/article/div/div[2]/div/div[2]/section[3]/div/form/button/div").click()
             driver.find_element_by_xpath("/html/body/div[1]/section/main/div/div[1]/article/div/div[2]/div/div[2]/section[3]/div/form/button").click()
 
